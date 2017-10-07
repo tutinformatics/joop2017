@@ -26,6 +26,9 @@ public class DarkShadow extends Shadow {
 	}
 	
 	// do not try this at home
+	// NB! This method gives you trouble when comparison
+	// is made with superclass object (Shadow)
+	// there will be no symmetry!
 	@Override
 	public boolean equals(Object other) {
 		if (this == other) {
@@ -36,8 +39,6 @@ public class DarkShadow extends Shadow {
 			if (super.equals(other)) {
 				return darkness == s.darkness;
 			}
-		} else if (other instanceof Shadow) {
-			return super.equals(other);
 		}
 		return false;
 	}
