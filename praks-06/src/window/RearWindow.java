@@ -6,7 +6,8 @@ public class RearWindow extends Window{
 	
 	private ControlButton buttonK;
 
-	public RearWindow(ControlButton buttonK) {
+	RearWindow(String name, ControlButton buttonK) {
+		super(name);
 		this.buttonK = buttonK;
 	}
 	
@@ -14,6 +15,13 @@ public class RearWindow extends Window{
 	public void openPartially() {
 		if (!buttonK.isBlocked()) {
 			super.openPartially();
+		}
+	}
+	
+	@Override
+	public void openFully() {
+		if (!buttonK.isBlocked()) {
+			super.openFully();
 		}
 	}
 }

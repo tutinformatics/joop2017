@@ -15,14 +15,34 @@ public class RearWindowTest {
 	@Before
 	public void setupTests() {
 		this.buttonK = new ControlButton();
-		this.rearWindow = new RearWindow(buttonK);
+		this.rearWindow = new RearWindow("C", buttonK);
 	}
 	
 	@Test
-	public void testRearWindowOpenBlocked() {
+	public void testRearWindowOpeningBlocked() {
 		buttonK.changeState();
 		rearWindow.openPartially();
 		assertEquals(0, rearWindow.getState());
 	}
-
+	
+	@Test
+	public void testRearWindowClosesWhenBlocked() {
+		rearWindow.openPartially();
+		buttonK.changeState();
+		rearWindow.closeFully();
+		assertEquals(0, rearWindow.getState());
+	}
+	
+	@Test
+	public void testRearWindowDoesNotOpenFullyWhenBlocked() {
+		buttonK.changeState();
+		rearWindow.openFully();
+		assertEquals(0, rearWindow.getState());
+	}
+	
+	@Test
+	public void createWindowAIsOfTypeRearWindow() {
+		Window w = Window.getRearWindow("C", buttonK);
+		assertEquals(RearWindow.class, w.getClass());
+	}
 }

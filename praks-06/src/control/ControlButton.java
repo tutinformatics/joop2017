@@ -2,13 +2,13 @@ package control;
 
 public class ControlButton {
 	
-	private boolean state = true; 
+	private boolean blocked = false; 
 
 	public void changeState() {
-		state = !state;
+		blocked = !blocked;
 	}
 	
 	public boolean isBlocked() {
-		return state;
+		return blocked;
 	}
 }

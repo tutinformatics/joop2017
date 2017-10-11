@@ -11,7 +11,7 @@ public class WindowTest {
 	
 	@Before
 	public void setUpTests() {
-		this.window = new Window();
+		this.window = new Window("A");
 	}
 
 	@Test
@@ -60,5 +60,22 @@ public class WindowTest {
 		assertEquals(10, window.getState());
 	}
 	
-
+	@Test
+	public void doNotCloseBelowMinState() {
+		window.openPartially();
+		window.closePartially();
+		window.closePartially();
+		assertEquals(0, window.getState());
+	}
+	
+	@Test
+	public void createWindowAIsOfTypeWindow() {
+		Window w = Window.getFrontWindow("A");
+		assertEquals(Window.class, w.getClass());
+	}
+	
+	@Test
+	public void testWindowStringRepresentation() {
+		assertEquals("Aken A, avatus: 0%", window.toString());
+	}
 }
