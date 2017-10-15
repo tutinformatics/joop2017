@@ -10,7 +10,7 @@ public class Window {
 	private int windowState = MIN_STATE;
 	private String name;
 	
-	public Window(String name) {
+	Window(String name) {
 		this.name = name;
 	}
 
