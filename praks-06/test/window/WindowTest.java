@@ -70,7 +70,7 @@ public class WindowTest {
 	
 	@Test
 	public void createWindowAIsOfTypeWindow() {
-		Window w = Window.getFrontWindow("A");
+		Window w = new Window("A");
 		assertEquals(Window.class, w.getClass());
 	}
 	

@@ -2,7 +2,7 @@ package window;
 
 import control.ControlButton;
 
-public class RearWindow extends Window{
+class RearWindow extends Window{
 	
 	private ControlButton buttonK;
 

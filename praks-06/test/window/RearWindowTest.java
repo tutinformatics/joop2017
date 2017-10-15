@@ -42,7 +42,7 @@ public class RearWindowTest {
 	
 	@Test
 	public void createWindowAIsOfTypeRearWindow() {
-		Window w = Window.getRearWindow("C", buttonK);
+		RearWindow w = new RearWindow("C", buttonK);
 		assertEquals(RearWindow.class, w.getClass());
 	}
 }

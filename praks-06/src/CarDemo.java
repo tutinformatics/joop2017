@@ -3,16 +3,17 @@ import java.util.List;
 
 import control.ControlButton;
 import window.Window;
+import window.WindowFactory;
 
 public class CarDemo {
 	public static void main(String[] args) {
 		ControlButton buttonK = new ControlButton();
 		
 		List<Window> windows = Arrays.asList(
-				Window.getFrontWindow("B"),
-				Window.getFrontWindow("A"),
-				Window.getRearWindow("C", buttonK),
-				Window.getRearWindow("D", buttonK));
+				WindowFactory.getFrontWindow("B"),
+				WindowFactory.getFrontWindow("A"),
+				WindowFactory.getRearWindow("C", buttonK),
+				WindowFactory.getRearWindow("D", buttonK));
 		
 		for (Window window : windows) {
 			window.openFully();

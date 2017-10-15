@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import control.ControlButton;
 import window.Window;
+import window.WindowFactory;
 
 public class CarTest {
 	
@@ -17,10 +18,10 @@ public class CarTest {
 	public void setup() {
 		this.buttonK = new ControlButton();
 		
-		this.car = new Car(Window.getFrontWindow("B"),
-				Window.getFrontWindow("A"),
-				Window.getRearWindow("C", buttonK),
-				Window.getRearWindow("D", buttonK),
+		this.car = new Car(WindowFactory.getFrontWindow("B"),
+				WindowFactory.getFrontWindow("A"),
+				WindowFactory.getRearWindow("C", buttonK),
+				WindowFactory.getRearWindow("D", buttonK),
 				buttonK);
 	}
 
@@ -57,8 +58,8 @@ public class CarTest {
 	@Test
 	public void testRearWindowMissingForElectricCar() {
 		Car car = new Car(
-				Window.getFrontWindow("A"),
-				Window.getFrontWindow("B"),
+				WindowFactory.getFrontWindow("A"),
+				WindowFactory.getFrontWindow("B"),
 				buttonK);
 		assertFalse(car.getWindowC().isPresent());
 		assertFalse(car.getWindowD().isPresent());
