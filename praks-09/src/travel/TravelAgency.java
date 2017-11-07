@@ -5,9 +5,11 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 public class TravelAgency {
+	private static final String OUTPUT_FILENAME = "/home/martin/jtmp/joopout.txt";
+
 	void playWithDestinations() throws FileNotFoundException {
 		
-		FileOutputStream out = new FileOutputStream("/home/martin/jtmp/joopout.txt", true);
+		FileOutputStream out = new FileOutputStream(OUTPUT_FILENAME, true);
 		System.setOut(new PrintStream(out));
 		
 		Destination oxford = new Destination("Oxford", 280);
