@@ -23,5 +23,15 @@ public class Elevator {
 			// stop
 		}
 	}
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public double getPrice() {
+		// TODO Auto-generated method stub
+		return 0.0;
+	}
 }
 
