@@ -24,12 +24,13 @@ public class SecurityGate implements SecurityGateDatabase{
 	}
 
 	private void fetchTickets() {
-		while(!Thread.interrupted()) {
-			Optional<BoardingPass> ticket = storage.getTicket();
-			ticket.ifPresent(this::processTicket);
-			/*if (ticket.isPresent()) {
-				processTicket(ticket.get());	
-			}*/
+		try {
+			while(!Thread.interrupted()) {
+				BoardingPass ticket = storage.getTicket();
+				processTicket(ticket);	
+			}
+		} catch (InterruptedException e) {
+			System.out.println("I quit.");
 		}
 	}
 	

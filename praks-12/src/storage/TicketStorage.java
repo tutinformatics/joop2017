@@ -10,16 +10,24 @@ public class TicketStorage {
 	
 	List<BoardingPass> passes = new ArrayList<>();
 	
-	public synchronized void addTicket(BoardingPass ticket) {
-		passes.add(ticket);
+	Integer lock = 4;
+	
+	public void addTicket(BoardingPass ticket) {
+		synchronized (lock) {
+			passes.add(ticket);
+			lock.notifyAll();
+		}
 	}
 
-	public synchronized Optional<BoardingPass> getTicket() {
-		if (!passes.isEmpty()) {
-			return Optional.of(passes.remove(0));
+	public BoardingPass getTicket() throws InterruptedException {
+		synchronized (lock) {
+			while (passes.isEmpty()) {
+				lock.wait();
+			}
+			return passes.remove(0);
 		}
-		return Optional.empty();
 	}
+	
 }
 
 

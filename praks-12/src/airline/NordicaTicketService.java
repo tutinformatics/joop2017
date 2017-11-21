@@ -11,10 +11,11 @@ public class NordicaTicketService implements AirlineTicketService{
 		this.storage = storage;
 	}
 
-	private void generateTickets() {
+	private void generateTickets() throws InterruptedException {
 		for (int i = 1; i <= MAX_TICKETS; i++) {
 			BoardingPass ticket = new NordicaBoardingPass("John", "Fu", i);
 			storage.addTicket(ticket);
+			Thread.sleep(300);
 		}
 	}
 	
@@ -23,6 +24,10 @@ public class NordicaTicketService implements AirlineTicketService{
 	 * */
 	@Override
 	public void run() {
-		generateTickets();
+		try {
+			generateTickets();
+		} catch (InterruptedException e) {
+			System.out.println("Interrrupted");
+		}
 	}
 }
